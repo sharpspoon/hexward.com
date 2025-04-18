@@ -1,6 +1,6 @@
-# HexWard Consulting Website
+# Hexward Consulting Website
 
-A professional website for HexWard, a software consulting firm. This website showcases the company's services, team, and provides a way for potential clients to get in touch.
+A professional website for Hexward, a software consulting firm. This website showcases the company's services, team, and provides a way for potential clients to get in touch.
 
 ## Project Structure
 
