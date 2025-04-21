@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         initScrollAnimation();
         setActiveNavItem();
         setCurrentYear();
+        initThemeToggle();
     });
 });
 
@@ -179,7 +180,8 @@ function initScrollAnimation() {
         /* Code-like elements */
         pre, code {
             font-family: 'Source Code Pro', monospace;
-            background-color: #f0f0f0;
+            background-color: var(--code-bg);
+            color: var(--code-color);
             border-radius: 2px;
             padding: 2px 4px;
             font-size: 0.9em;
@@ -188,11 +190,11 @@ function initScrollAnimation() {
         pre {
             padding: 1rem;
             overflow-x: auto;
-            border-left: 3px solid #546e7a;
+            border-left: 3px solid var(--secondary-color);
         }
 
         .comment {
-            color: #607d8b;
+            color: var(--text-light);
             font-family: 'Source Code Pro', monospace;
             font-style: italic;
         }
@@ -282,5 +284,116 @@ function setCurrentYear() {
     const yearElement = document.getElementById('current-year');
     if (yearElement) {
         yearElement.textContent = new Date().getFullYear();
+    }
+}
+
+/**
+ * Initialize Theme Toggle
+ * Handles dark/light mode switching with hacker-style animation
+ */
+function initThemeToggle() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        body.classList.add('dark-mode');
+        updateToggleIcon(true);
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function() {
+            // Toggle dark mode class
+            const isDarkMode = body.classList.toggle('dark-mode');
+
+            // Save preference to localStorage
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+
+            // Update toggle icon
+            updateToggleIcon(isDarkMode);
+
+            // Play hacker-style animation
+            playHackerAnimation();
+        });
+    }
+
+    // Update toggle icon based on current theme
+    function updateToggleIcon(isDarkMode) {
+        const icon = themeToggle.querySelector('i');
+        if (isDarkMode) {
+            icon.className = 'fas fa-moon';
+        } else {
+            icon.className = 'fas fa-lightbulb';
+        }
+    }
+
+    // Hacker-style animation during theme transition
+    function playHackerAnimation() {
+        // Create overlay for the animation
+        const overlay = document.createElement('div');
+        overlay.className = 'theme-transition-overlay';
+        document.body.appendChild(overlay);
+
+        // Create glitch text element
+        const glitchText = document.createElement('div');
+        glitchText.className = 'glitch-text';
+        glitchText.innerHTML = '<span data-text="PULLING CODE...">PULLING CODE...</span>';
+        overlay.appendChild(glitchText);
+
+        // Create matrix code element
+        const matrixCode = document.createElement('div');
+        matrixCode.className = 'matrix-code';
+        overlay.appendChild(matrixCode);
+
+        // Generate more random matrix characters for a denser code effect
+        for (let i = 0; i < 80; i++) {
+            const char = document.createElement('span');
+            char.textContent = getRandomChar();
+            char.style.left = `${Math.random() * 100}%`;
+            char.style.animationDuration = `${Math.random() * 2 + 1}s`;
+            char.style.animationDelay = `${Math.random() * 0.5}s`;
+
+            // Vary the size and opacity for more dynamic effect
+            char.style.fontSize = `${Math.random() * 0.5 + 0.8}rem`;
+            char.style.opacity = `${Math.random() * 0.5 + 0.5}`;
+
+            matrixCode.appendChild(char);
+        }
+
+        // Show animation
+        setTimeout(() => {
+            overlay.classList.add('active');
+
+            // Add "THEME SWITCHED" text after a delay
+            setTimeout(() => {
+                glitchText.innerHTML = '<span data-text="complete!!!">complete.</span>';
+            }, 1000);
+
+            // Remove overlay after animation completes
+            setTimeout(() => {
+                overlay.classList.remove('active');
+                setTimeout(() => {
+                    document.body.removeChild(overlay);
+                }, 500);
+            }, 2000);
+        }, 10);
+    }
+
+    // Helper function to generate random matrix-like characters for dark mode
+    function getRandomChar() {
+        // Use a mix of programming-related characters for dark mode
+        // Including: hexadecimal digits, brackets, operators, and common programming symbols
+        const chars = '0123456789ABCDEFabcdef{}[]()<>+-*/=&|!~;:,.?_$#@%^\\\'"`';
+
+        // Add some code-like keywords and fragments with low probability
+        const codeFragments = ['var', 'let', 'const', 'if', 'else', 'for', 'while', 'function', 'return', 'true', 'false', 'null', 'undefined'];
+
+        // 90% chance to return a single character, 10% chance to return a code fragment
+        if (Math.random() < 0.9) {
+            return chars.charAt(Math.floor(Math.random() * chars.length));
+        } else {
+            return codeFragments[Math.floor(Math.random() * codeFragments.length)].charAt(Math.floor(Math.random() * 3));
+        }
     }
 }
