@@ -1,6 +1,6 @@
 /* 
-   HexWard Consulting - Main Stylesheet
-   Author: HexWard Team
+   Hexward Consulting - Main Stylesheet
+   Author: Hexward Team
    Version: 1.2
 */
 
@@ -558,6 +558,12 @@ footer {
 
 .dark-mode .btn:hover {
     background-color: #006642; /* Even darker green on hover */
+}
+
+/* Dark mode step number styles - matching button colors */
+.dark-mode .step-number {
+    background-color: #00885a; /* Darker green color to match buttons */
+    color: white;
 }
 
 /* Dark mode styles for service boxes */

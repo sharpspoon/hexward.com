@@ -1,6 +1,6 @@
 /**
- * HexWard Consulting - Main JavaScript File
- * Author: HexWard Team
+ * Hexward Consulting - Main JavaScript File
+ * Author: Hexward Team
  * Version: 1.0
  */
 
