@@ -295,9 +295,15 @@ function initThemeToggle() {
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
 
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
+    // Determine theme: saved preference or OS-level
+    let savedTheme;
+    try {
+        savedTheme = localStorage.getItem('theme');
+    } catch (e) {
+        savedTheme = null;
+    }
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
         body.classList.add('dark-mode');
         updateToggleIcon(true);
     }
