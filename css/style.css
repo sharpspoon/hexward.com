@@ -1158,6 +1158,15 @@ footer {
         font-size: 1.25rem;
     }
 
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav ul li {
+        margin: 0.5rem;
+    }
+
     .feature-grid,
     .values-grid,
     .team-grid,
@@ -1174,5 +1183,24 @@ footer {
     .process-step {
         width: 100%;
         max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 0.25rem 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul li a, 
+    nav ul li button {
+        display: block;
+        padding: 0.5rem;
     }
 }
