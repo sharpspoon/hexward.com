@@ -469,6 +469,14 @@ footer {
 /* ===== ABOUT PAGE ===== */
 .about-intro {
     padding: var(--spacing-lg) 0;
+    background-color: black;
+    color: white;
+}
+
+.about-intro h2, 
+.about-intro h3, 
+.about-intro h4 {
+    color: white;
 }
 
 .about-content {
