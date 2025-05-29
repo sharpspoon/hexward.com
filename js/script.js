@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
         setActiveNavItem();
         setCurrentYear();
         initThemeToggle();
+
+        // Initialize text scramble effect
+        initTextScrambleEffect();
     });
 });
 
@@ -285,6 +288,99 @@ function setCurrentYear() {
     if (yearElement) {
         yearElement.textContent = new Date().getFullYear();
     }
+}
+
+/**
+ * Text Scramble Effect
+ * Creates an old-school computer system rendering effect for main text
+ * when a page is loaded
+ */
+function initTextScrambleEffect() {
+    // Add a small delay to ensure content is fully loaded
+    setTimeout(() => {
+        // Select the sub-heading paragraph in the page-header section and the hero h2
+        const paragraphs = Array.from(document.querySelectorAll('.page-header p, .hero h2'));
+
+        // Store original texts to avoid flicker if user navigates quickly
+        const originalTexts = new Map();
+
+        // Process each paragraph
+        paragraphs.forEach((paragraph, index) => {
+            const originalText = paragraph.textContent;
+            originalTexts.set(paragraph, originalText);
+            const textLength = originalText.length;
+
+            // Skip if paragraph is empty or very short
+            if (textLength < 3) return;
+
+            // Create scrambled text
+            let scrambledText = '';
+            for (let i = 0; i < textLength; i++) {
+                // Preserve spaces and special characters
+                if (originalText[i] === ' ' || originalText[i].match(/[^a-zA-Z0-9]/)) {
+                    scrambledText += originalText[i];
+                } else {
+                    scrambledText += getRandomScrambleChar();
+                }
+            }
+
+            // Set initial scrambled text
+            paragraph.textContent = scrambledText;
+
+            // Add a staggered delay for each paragraph to create a cascade effect
+            setTimeout(() => {
+                // Gradually reveal the original text
+                let currentIndex = 0;
+                const revealInterval = setInterval(() => {
+                    // Find next character to reveal (skip spaces and special chars)
+                    while (
+                        currentIndex < textLength && 
+                        (originalText[currentIndex] === ' ' || originalText[currentIndex].match(/[^a-zA-Z0-9]/))
+                    ) {
+                        currentIndex++;
+                    }
+
+                    if (currentIndex >= textLength) {
+                        // All characters revealed, stop the interval
+                        clearInterval(revealInterval);
+                        // Ensure the final text is exactly the original
+                        paragraph.textContent = originalText;
+                        return;
+                    }
+
+                    // Update the text with the next character revealed
+                    let newText = '';
+                    for (let i = 0; i < textLength; i++) {
+                        if (i <= currentIndex || originalText[i] === ' ' || originalText[i].match(/[^a-zA-Z0-9]/)) {
+                            newText += originalText[i];
+                        } else {
+                            newText += getRandomScrambleChar();
+                        }
+                    }
+
+                    paragraph.textContent = newText;
+                    currentIndex++;
+
+                }, 20 + Math.random() * 10); // Slightly randomized speed for more natural effect
+            }, index * 100); // Staggered start for each paragraph
+        });
+
+        // Handle page unload to restore original text immediately if user navigates away
+        window.addEventListener('beforeunload', () => {
+            originalTexts.forEach((text, paragraph) => {
+                paragraph.textContent = text;
+            });
+        });
+    }, 200); // Small delay to ensure DOM is fully ready
+}
+
+/**
+ * Generate a random character for the scramble effect
+ */
+function getRandomScrambleChar() {
+    // Use a mix of programming-related characters for the scramble effect
+    const chars = '0123456789ABCDEFabcdef{}[]()<>+-*/=&|!~;:,.?_$#@%^\\\'"`';
+    return chars.charAt(Math.floor(Math.random() * chars.length));
 }
 
 /**
