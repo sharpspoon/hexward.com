@@ -445,7 +445,7 @@ class Terminal {
             'contact.txt': `
                 <div class="terminal-file-content">
                     <h3>Contact Information</h3>
-                    <p>Email: info@hexward.com</p>
+                    <p>Email: robin.ward@hexward.com</p>
                     <p>Website: https://hexward.com</p>
                     <p>To discuss your project, please send an email or use the contact form on the website.</p>
                 </div>
@@ -607,7 +607,7 @@ class Terminal {
         this.addOutput(`
             <div class="terminal-contact">
                 <h3>Contact Hexward Consulting</h3>
-                <p>Email: <a href="mailto:info@hexward.com">info@hexward.com</a></p>
+                <p>Email: <a href="mailto:robin.ward@hexward.com">robin.ward@hexward.com</a></p>
                 <p>For more information, visit the <a href="contact.html">Contact Page</a>.</p>
             </div>
         `);
