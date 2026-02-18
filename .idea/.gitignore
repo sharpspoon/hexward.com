@@ -6,3 +6,10 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+/hexward.com.iml
+/misc.xml
+/modules.xml
+/inspectionProfiles/profiles_settings.xml
+/dictionaries/project.xml
+/inspectionProfiles/Project_Default.xml
+/vcs.xml
