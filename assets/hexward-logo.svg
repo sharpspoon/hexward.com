@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 88" role="img" aria-labelledby="title desc">
+  <title id="title">Hexward Consulting Logo</title>
+  <desc id="desc">Symmetric hex-network emblem with wordmark.</desc>
+  <defs>
+    <linearGradient id="frameLg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00ff9d"/>
+      <stop offset="100%" stop-color="#607d8b"/>
+    </linearGradient>
+    <linearGradient id="coreLg" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#b7ffe1"/>
+      <stop offset="100%" stop-color="#00ff9d"/>
+    </linearGradient>
+  </defs>
+
+  <path d="M44 4 L78 24 L78 64 L44 84 L10 64 L10 24 Z" fill="none" stroke="url(#frameLg)" stroke-width="4" stroke-linejoin="round"/>
+
+  <path d="M44 44 L44 13 M44 44 L70 28 M44 44 L70 60 M44 44 L44 75 M44 44 L18 60 M44 44 L18 28" fill="none" stroke="url(#coreLg)" stroke-width="3.4" stroke-linecap="round"/>
+
+  <circle cx="44" cy="44" r="4.2" fill="#00ff9d"/>
+  <circle cx="44" cy="13" r="2.9" fill="#8cd7b8"/>
+  <circle cx="70" cy="28" r="2.9" fill="#8cd7b8"/>
+  <circle cx="70" cy="60" r="2.9" fill="#8cd7b8"/>
+  <circle cx="44" cy="75" r="2.9" fill="#8cd7b8"/>
+  <circle cx="18" cy="60" r="2.9" fill="#8cd7b8"/>
+  <circle cx="18" cy="28" r="2.9" fill="#8cd7b8"/>
+
+  <text x="104" y="41" fill="#ffffff" font-size="28" font-family="'Roboto Mono', 'Source Code Pro', monospace" font-weight="700" letter-spacing="0.5">HEXWARD</text>
+  <text x="104" y="65" fill="#8aa0ab" font-size="16" font-family="'Source Code Pro', monospace" letter-spacing="1.6">CONSULTING</text>
+</svg>

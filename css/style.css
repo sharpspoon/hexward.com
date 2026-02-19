@@ -198,21 +198,16 @@ header .container {
 }
 
 .logo a {
+    display: inline-flex;
+    align-items: center;
     text-decoration: none;
 }
 
-.logo h1 {
-    color: white;
-    margin-bottom: 0;
-    font-size: 1.5rem;
-    font-family: var(--heading-font);
-}
-
-.logo p {
-    color: var(--secondary-color);
-    font-size: 0.8rem;
-    margin-bottom: 0;
-    font-family: var(--body-font);
+.nav-logo {
+    width: 240px;
+    height: auto;
+    max-width: 100%;
+    display: block;
 }
 
 nav ul {
@@ -1330,6 +1325,10 @@ footer {
         margin-bottom: var(--spacing-sm);
     }
 
+    .nav-logo {
+        width: 200px;
+    }
+
     nav ul {
         justify-content: center;
     }
@@ -1367,6 +1366,10 @@ footer {
     nav ul {
         flex-wrap: wrap;
         justify-content: center;
+    }
+
+    .nav-logo {
+        width: 180px;
     }
 
     nav ul li {
