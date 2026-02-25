@@ -374,6 +374,31 @@ nav ul li a.active {
     color: var(--text-color);
 }
 
+.cta-proof {
+    margin: 0 0 var(--spacing-md);
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.cta-proof li {
+    padding: 0.6rem 0;
+    color: var(--text-color);
+    font-family: var(--body-font);
+}
+
+.cta-proof li + li {
+    border-top: 1px solid var(--border-color);
+}
+
+.cta-proof li::before {
+    content: ">";
+    color: var(--secondary-color);
+    margin-right: 0.5rem;
+    font-weight: 700;
+}
+
 .cta .btn {
     background-color: var(--secondary-color);
     font-family: var(--body-font);
