@@ -3,91 +3,359 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z5TX31BKXN"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+    <title>Hexward Consulting | Backend, DevOps, Database, AI Automation</title>
+    <meta name="description" content="Hexward Consulting helps teams ship reliable software with backend development, DevOps, database architecture, and AI automation services.">
+    <meta name="robots" content="index, follow">
+    <style>
+        :root {
+            --bg: #d9d9d9;
+            --panel: #efefef;
+            --text: #111111;
+            --muted: #3a3a3a;
+            --line: #7a7a7a;
+            --blue: #0000cc;
+            --green: #008000;
+            --red: #cc0000;
+        }
 
-      gtag('config', 'G-Z5TX31BKXN');
-    </script>
-    <title>Hexward Consulting - Software Solutions</title>
-    <link rel="icon" href="assets/hexward-mark.svg" type="image/svg+xml">
-    <link rel="shortcut icon" href="assets/hexward-mark.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap">
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Courier New", Courier, monospace;
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--blue);
+        }
+
+        a:hover,
+        a:focus {
+            color: var(--red);
+        }
+
+        .wrap {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 1.25rem;
+        }
+
+        header {
+            border: 1px solid var(--line);
+            background: #f7f7f7;
+            margin-top: 1rem;
+        }
+
+        .brand {
+            border-bottom: 1px solid var(--line);
+            padding: 0.75rem 1rem;
+            color: var(--green);
+            font-weight: bold;
+            letter-spacing: 0.04em;
+        }
+
+        nav {
+            padding: 0.75rem 1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            border: 1px solid var(--line);
+            padding: 0.2rem 0.5rem;
+            display: inline-block;
+        }
+
+        main {
+            margin-top: 1.25rem;
+            border: 1px solid var(--line);
+            background: #fafafa;
+            padding: 1rem;
+        }
+
+        section {
+            padding: 1rem 0;
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin: 0 0 0.75rem;
+            line-height: 1.3;
+        }
+
+        h1 {
+            color: var(--blue);
+            font-size: 1.65rem;
+        }
+
+        h2 {
+            color: #000;
+            font-size: 1.35rem;
+        }
+
+        h3 {
+            color: var(--green);
+            font-size: 1.05rem;
+        }
+
+        p {
+            margin: 0 0 0.9rem;
+            color: var(--text);
+        }
+
+        .terminal {
+            background: #000;
+            border: 1px solid var(--line);
+            color: #00ff00;
+            padding: 0.85rem;
+            overflow-x: auto;
+            margin: 0.8rem 0 1rem;
+        }
+
+        .cursor {
+            color: #00ff00;
+            animation: blink 1s steps(1, end) infinite;
+        }
+
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
+        .cta-button {
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+            background: var(--blue);
+            border: 2px solid #000;
+            padding: 0.45rem 0.85rem;
+            font-weight: bold;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 0.8rem;
+        }
+
+        .card {
+            border: 1px solid var(--line);
+            background: var(--panel);
+            padding: 0.75rem;
+        }
+
+        .about-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: minmax(180px, 220px) 1fr;
+            align-items: start;
+        }
+
+        .about-grid img {
+            width: 100%;
+            height: auto;
+            border: 1px solid var(--line);
+            display: block;
+            background: #000;
+        }
+
+        .credentials {
+            margin: 0;
+            padding-left: 1.1rem;
+            color: var(--muted);
+        }
+
+        .contact-panel {
+            border: 1px solid var(--line);
+            background: var(--panel);
+            padding: 0.75rem;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid var(--line);
+            margin: 0.75rem 0 0;
+        }
+
+        footer {
+            margin: 1rem 0 1.5rem;
+            border: 1px solid var(--line);
+            background: #f0f0f0;
+            padding: 0.75rem 1rem;
+            color: var(--muted);
+        }
+
+        .contact-form {
+            border: 1px solid var(--line);
+            background: #fff;
+            padding: 0.75rem;
+            margin-top: 0.75rem;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.75rem;
+            color: var(--muted);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            margin-top: 0.3rem;
+            border: 1px solid #666;
+            background: #fff;
+            color: #111;
+            padding: 0.5rem;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 0.95rem;
+        }
+
+        .contact-form textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            font-family: "Courier New", Courier, monospace;
+            background: var(--blue);
+            color: #fff;
+            border: 1px solid #000;
+            padding: 0.45rem 0.8rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 720px) {
+            h1 {
+                font-size: 1.45rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header will be loaded dynamically -->
+    <div class="wrap">
+        <header>
+            <div class="brand">HEXWARD CONSULTING // YOUR PERSONAL FULL-STACK WEAPON</div>
+            <nav aria-label="Primary navigation">
+                <ul>
+                    <li><a href="#hero">Hero</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About Robin</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <section class="hero">
-        <div class="container">
-            <h2>Technical Consulting for Growing Businesses</h2>
-            <p>$ hexward --init <span class="blink">_</span></p>
-            <pre><code>// Building efficient, scalable solutions
+        <main>
+            <section id="hero">
+                <h1>Technical Consulting for Growing Businesses</h1>
+                <p>Practical guidance and hands-on execution for teams that need architecture cleanup, delivery rescue, or automation implementation.</p>
+                <pre class="terminal" aria-label="terminal style snippet">$ hexward --init <span class="cursor">_</span>
+// Building efficient, scalable solutions
 function hexward() {
   return {
     code: 'clean',
     architecture: 'solid',
     performance: 'optimized'
   };
-}</code></pre>
-            <a href="contact.html" class="btn">Book a Consultation</a>
-        </div>
-    </section>
+}</pre>
+                <a class="cta-button" href="#contact">Book a Consultation</a>
+                <hr>
+            </section>
 
-    <section class="features">
-        <div class="container">
-            <h2>// Core Services</h2>
-            <div class="feature-grid">
-                <div class="feature">
-                    <i class="fas fa-code"></i>
-                    <h3>Backend Development</h3>
-                    <p><code>const api = new API({ scalable: true, secure: true });</code></p>
-                    <p>RESTful APIs, microservices, and server-side applications built with modern frameworks.</p>
+            <section id="services">
+                <h2>Core Services</h2>
+                <p>I provide consulting-led software services built around your constraints, priorities, and measurable outcomes.</p>
+                <div class="service-grid">
+                    <article class="card">
+                        <h3>Backend Development</h3>
+                        <p>RESTful APIs, microservices, and server-side applications built with modern frameworks.</p>
+                        <pre class="terminal">const api = new API({ scalable: true, secure: true });</pre>
+                    </article>
+                    <article class="card">
+                        <h3>DevOps &amp; Infrastructure</h3>
+                        <p>CI/CD pipelines, containerization, and infrastructure as code for seamless deployment.</p>
+                        <pre class="terminal">$ docker-compose up --scale service=3</pre>
+                    </article>
+                    <article class="card">
+                        <h3>Database Architecture</h3>
+                        <p>Efficient database design, optimization, and migration strategies for any scale.</p>
+                        <pre class="terminal">SELECT performance FROM solutions WHERE optimized = true;</pre>
+                    </article>
+                    <article class="card">
+                        <h3>AI Automation</h3>
+                        <p>Smart automation solutions that streamline operations and enhance team productivity.</p>
+                        <pre class="terminal">const workflow = new AIWorkflow({ optimize: true, automate: true });</pre>
+                    </article>
                 </div>
-                <div class="feature">
-                    <i class="fas fa-terminal"></i>
-                    <h3>DevOps & Infrastructure</h3>
-                    <p><code>$ docker-compose up --scale service=3</code></p>
-                    <p>CI/CD pipelines, containerization, and infrastructure as code for seamless deployment.</p>
-                </div>
-                <div class="feature">
-                    <i class="fas fa-database"></i>
-                    <h3>Database Architecture</h3>
-                    <p><code>SELECT performance FROM solutions WHERE optimized = true;</code></p>
-                    <p>Efficient database design, optimization, and migration strategies for any scale.</p>
-                </div>
-                <div class="feature">
-                    <i class="fas fa-robot"></i>
-                    <h3>AI Process Automation</h3>
-                    <p><code>const workflow = new AIWorkflow({ optimize: true, automate: true });</code></p>
-                    <p>Smart automation solutions that streamline operations and enhance team productivity.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+                <hr>
+            </section>
 
-    <section class="cta">
-        <div class="container">
-            <h2>$ git commit -m "Get expert technical consulting"</h2>
-            <p>
-                <span class="comment">// Get practical guidance and hands-on execution</span><br>
-                <code>hexward.initProject({ client: 'you', startDate: new Date() });</code>
-            </p>
-            <ul class="cta-proof">
-                <li>Best fit: teams needing architecture cleanup, delivery rescue, or automation implementation</li>
-                <li>Direct collaboration with Robin from discovery through delivery</li>
-                <li>Typical response time for new inquiries: within 1 business day</li>
-            </ul>
-            <a href="contact.html" class="btn">Start a Consultation</a>
-        </div>
-    </section>
+            <section id="about">
+                <h2>About Robin</h2>
+                <div class="about-grid">
+                    <figure>
+                        <img src="robin.png" alt="Robin Ward, founder of Hexward Consulting">
+                    </figure>
+                    <div>
+                        <p>Hi, I’m Robin Ward, the founder and sole developer behind Hexward. I started in 2015 under the name Steel City Sites, focused on web design and front-end development for small businesses, then expanded into full-stack consulting and launched Hexward in 2025.</p>
+                        <p>I work directly with clients to take products from concept to launch or untangle existing systems, including full-stack application development, cloud infrastructure, data workflow improvements, and custom software delivery.</p>
+                        <h3>Credentials</h3>
+                        <ul class="credentials">
+                            <li>Founder and sole developer at Hexward Consulting</li>
+                            <li>10+ years of software delivery experience (since 2015)</li>
+                            <li>Direct client collaboration from discovery through delivery</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+            </section>
 
-    <!-- Footer will be loaded dynamically -->
+            <section id="contact">
+                <h2>Contact</h2>
+                <div class="contact-panel">
+                    <p>Tell me what you need, and I will send a clear next-step plan.</p>
+                    <p>Email: <a href="mailto:robin.ward@hexward.com">robin.ward@hexward.com</a></p>
+                    <p>Or use this direct link: <a href="mailto:robin.ward@hexward.com?subject=Hexward%20Consultation%20Request">Start a Consultation</a></p>
+                    <form class="contact-form" action="https://formspree.io/f/xzzropwl" method="POST">
+                        <label>
+                            // Your email:
+                            <input type="email" name="email" placeholder="user@example.com" required>
+                        </label>
+                        <label>
+                            /* Your message: */
+                            <textarea name="message" placeholder="// Type your message here..." required></textarea>
+                        </label>
+                        <button type="submit">Execute Send()</button>
+                    </form>
+                </div>
+            </section>
+        </main>
 
-    <script src="js/script.js"></script>
+        <footer>
+            <p>&copy; 2026 Hexward Consulting. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
 </html>

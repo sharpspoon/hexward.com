@@ -1,85 +1,46 @@
 # Hexward Consulting Website
 
-A professional website for Hexward, a software consulting firm. This website showcases the company's services, team, and provides a way for potential clients to get in touch.
+A static, single-page website for Hexward Consulting with a 90s-inspired design and fully crawlable HTML content.
 
 ## Project Structure
 
-```
+```text
 hexward.com/
-├── index.html          # Homepage
-├── about.html          # About Us page
-├── services.html       # Services page
-├── contact.html        # Contact page
-├── css/
-│   └── style.css       # Main stylesheet
-├── js/
-│   └── script.js       # JavaScript functionality
+├── index.html          # Single-page website (all HTML/CSS inline)
+├── robots.txt          # Crawler directives
+├── sitemap.xml         # XML sitemap
+├── robin.png           # About section profile photo
+├── assets/             # Logo/brand assets (kept for compatibility)
+├── css/                # Legacy styles (not required by index.html)
+├── js/                 # Legacy scripts (not required by index.html)
 └── README.md           # This file
 ```
 
-## Features
+## Current Site Design
 
-- Responsive design that works on mobile, tablet, and desktop
-- Modern, professional layout with consistent branding
-- Contact form with client-side validation
-- Smooth scrolling and animations
-- Detailed service descriptions
-- Team member profiles
-- Client testimonials
-- FAQ section
+- Single-file delivery: no external CSS, JS, frameworks, or dependencies
+- 90s terminal-inspired aesthetic using inline CSS
+- Static anchor navigation (`#hero`, `#services`, `#about`, `#contact`)
+- Semantic HTML structure for accessibility and SEO
+- All visible copy rendered directly in raw HTML
+- Blinking cursor effect only (no other animations)
 
-## Technologies Used
+## SEO
 
-- HTML5
-- CSS3 (with CSS variables and Flexbox/Grid layouts)
-- JavaScript (ES6+)
-- Font Awesome for icons
-- Google Fonts for typography
-
-## Browser Support
-
-The website is compatible with:
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Opera (latest)
+- `index.html` includes:
+  - Proper `<title>`
+  - `<meta name="description">`
+  - Semantic heading hierarchy (`h1` to `h3`)
+  - Semantic page landmarks (`header`, `main`, `section`, `footer`)
+- `robots.txt` allows crawling and points to sitemap
+- `sitemap.xml` includes the canonical site URL
 
 ## Deployment
 
-This is a static website that can be deployed to any web hosting service. Simply upload all files and directories to your web server's public directory.
+This is a static site and can be deployed on any static host by uploading:
 
-### Deployment Options
-
-1. **Traditional Web Hosting**: Upload files via FTP to your hosting provider
-2. **GitHub Pages**: Host directly from your GitHub repository
-3. **Netlify**: Connect your GitHub repository for continuous deployment
-4. **Vercel**: Similar to Netlify, with automatic deployments
-5. **AWS S3**: Host as a static website on Amazon S3
-
-## Development
-
-To work on this project locally:
-
-1. Clone the repository
-2. Open the project in your code editor
-3. Use a local development server to preview changes (e.g., Live Server extension for VS Code)
-
-## Future Enhancements
-
-- Add a blog section for company news and insights
-- Implement a dark mode toggle
-- Add more interactive elements and animations
-- Create a portfolio/case studies section
-- Implement a newsletter signup
-- Add multilingual support
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Credits
-
-- Placeholder images from [Placeholder.com](https://placeholder.com)
-- Icons from [Font Awesome](https://fontawesome.com)
-- Fonts from [Google Fonts](https://fonts.google.com)
+- `index.html`
+- `robots.txt`
+- `sitemap.xml`
+- `robin.png`
+- optional `assets/` files
