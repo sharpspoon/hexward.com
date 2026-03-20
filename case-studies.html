@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Studies | Hexward Consulting</title>
+    <meta name="description" content="Real results from real engineering engagements. See how Hexward Consulting has helped teams solve data pipeline, DevOps, and backend architecture challenges.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hexward.com/case-studies.html">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z5TX31BKXN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Z5TX31BKXN');
+    </script>
+</head>
+<body>
+    <header>
+        <div class="wrap">
+            <div class="brand"><a href="/">Hexward Consulting</a></div>
+            <nav aria-label="Primary navigation">
+                <ul>
+                    <li><a href="/#services">Services</a></li>
+                    <li><a href="case-studies.html">Work</a></li>
+                    <li><a href="/#about">About</a></li>
+                    <li><a href="/#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero section-border">
+            <div class="wrap">
+                <h1>Case Studies</h1>
+                <p>Real results from real engagements. Client details anonymized to protect confidentiality.</p>
+            </div>
+        </section>
+
+        <section id="data-pipeline" class="section-border">
+            <div class="wrap content-section">
+                <span class="case-study label" style="border:none;padding:0;margin-bottom:0.5rem;">Data Engineering</span>
+                <h2>Enterprise Data Pipeline Overhaul</h2>
+                <div class="case-study metric" style="border:none;padding:0;">90% reduction in data discrepancies</div>
+
+                <h3>The Problem</h3>
+                <p>A large enterprise client had business-critical data flowing between multiple internal systems and third-party platforms. Data mismatches were a weekly occurrence, causing downstream reporting errors that eroded stakeholder trust. The data engineering team spent 20+ hours per week on manual reconciliation instead of building new capabilities.</p>
+
+                <h3>The Approach</h3>
+                <p>I started with a full audit of the existing data flow, mapping every source, transformation, and destination. The core issues were a lack of validation at ingestion, no idempotency guarantees in the ETL processes, and zero automated monitoring.</p>
+                <p>I redesigned the pipeline architecture with:</p>
+                <ul>
+                    <li>Schema validation at every ingestion point to catch bad data before it propagated</li>
+                    <li>Idempotent ETL jobs that could safely retry on failure without creating duplicates</li>
+                    <li>Automated reconciliation checks running after each pipeline stage</li>
+                    <li>Real-time alerting so the team could catch issues in minutes instead of days</li>
+                </ul>
+
+                <h3>The Result</h3>
+                <p>Data discrepancies dropped by 90% within the first month. The team reclaimed 20+ hours per week previously spent on manual fixes. Stakeholders regained confidence in reporting data, and the data team was able to shift focus to building new analytics capabilities.</p>
+
+                <a href="/#contact" class="btn btn-primary" style="margin-top:1rem;">Have a similar challenge? Let's talk.</a>
+            </div>
+        </section>
+
+        <section id="cicd" class="section-border">
+            <div class="wrap content-section">
+                <span class="case-study label" style="border:none;padding:0;margin-bottom:0.5rem;">DevOps</span>
+                <h2>CI/CD Modernization for a Growing Team</h2>
+                <div class="case-study metric" style="border:none;padding:0;">70% faster developer onboarding</div>
+
+                <h3>The Problem</h3>
+                <p>A mid-size engineering team (around 30 developers) had outgrown their ad-hoc build and deploy processes. Builds were inconsistent across machines, deployments required manual steps, and new hires took 2-3 weeks before they could get their first change into production. The lack of standardization was slowing everyone down.</p>
+
+                <h3>The Approach</h3>
+                <p>I implemented a standardized CI/CD pipeline from scratch:</p>
+                <ul>
+                    <li>Docker-based build environments ensuring identical builds on every machine</li>
+                    <li>Automated testing gates that blocked broken code from reaching production</li>
+                    <li>One-click deployment scripts with rollback capabilities</li>
+                    <li>Comprehensive developer onboarding documentation and setup scripts</li>
+                    <li>Infrastructure as Code using Terraform for reproducible environments</li>
+                </ul>
+
+                <h3>The Result</h3>
+                <p>New developers went from 2-3 weeks to 2-3 days for their first production deploy. Build failures that previously required hours of debugging became self-evident from automated test output. The team's deployment frequency increased from weekly to multiple times per day.</p>
+
+                <a href="/#contact" class="btn btn-primary" style="margin-top:1rem;">Want to modernize your pipeline? Let's talk.</a>
+            </div>
+        </section>
+
+        <section id="modernization">
+            <div class="wrap content-section">
+                <span class="case-study label" style="border:none;padding:0;margin-bottom:0.5rem;">Backend Architecture</span>
+                <h2>Legacy System Modernization</h2>
+                <div class="case-study metric" style="border:none;padding:0;">3x improvement in API response times</div>
+
+                <h3>The Problem</h3>
+                <p>An aging monolithic application was the backbone of the business, but it had become a bottleneck. Page loads were slow, outages during peak traffic were common, and adding new features required navigating a tangled codebase where every change risked breaking something else. The team was spending more time on damage control than on building new value.</p>
+
+                <h3>The Approach</h3>
+                <p>Rather than a risky full rewrite, I led a phased modernization starting with the highest-impact pain points:</p>
+                <ul>
+                    <li>Identified and extracted the most performance-critical services into standalone components</li>
+                    <li>Added caching layers for frequently-accessed data</li>
+                    <li>Optimized the worst database queries (some were taking 10+ seconds)</li>
+                    <li>Introduced horizontal scaling for the services that needed it</li>
+                    <li>Set up monitoring and alerting so the team could be proactive instead of reactive</li>
+                </ul>
+
+                <h3>The Result</h3>
+                <p>API response times improved 3x across the board. Peak-traffic outages were eliminated. The team was able to ship new features at twice the previous pace because the codebase was more modular and easier to reason about.</p>
+
+                <a href="/#contact" class="btn btn-primary" style="margin-top:1rem;">Dealing with a legacy system? Let's talk.</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <div class="footer-content">
+                <p>&copy; 2026 Hexward Consulting. All rights reserved. US-based &middot; Fully Remote</p>
+                <div class="footer-links">
+                    <a href="https://www.linkedin.com/in/wardro/">LinkedIn</a>
+                    <a href="https://github.com/sharpspoon">GitHub</a>
+                    <a href="mailto:robin.ward@hexward.com">Email</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
