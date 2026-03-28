@@ -3,6 +3,7 @@ name: Deploy to DreamHost
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -23,10 +24,11 @@ jobs:
           strip_components: 0
           overwrite: true
           command: |
-            rm -f /home/hexward/hexward.com/index.html
-            rm -f /home/hexward/hexward.com/robots.txt
-            rm -f /home/hexward/hexward.com/sitemap.xml
-            rm -f /home/hexward/hexward.com/blog.html
-            rm -f /home/hexward/hexward.com/case-studies.html
-            rm -rf /home/hexward/hexward.com/css
-            rm -rf /home/hexward/hexward.com/services
+            rm -f /home/dh_5qphxs/hexward.com/index.html
+            rm -f /home/dh_5qphxs/hexward.com/robots.txt
+            rm -f /home/dh_5qphxs/hexward.com/sitemap.xml
+            rm -f /home/dh_5qphxs/hexward.com/blog.html
+            rm -f /home/dh_5qphxs/hexward.com/case-studies.html
+            rm -rf /home/dh_5qphxs/hexward.com/css
+            rm -rf /home/dh_5qphxs/hexward.com/services
+            rm -rf /home/dh_5qphxs/hexward.com/assets
