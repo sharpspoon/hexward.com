@@ -24,10 +24,11 @@ jobs:
           port: 22
           timeout: 30s
           command_timeout: 5m
-          command: |
+          script: |
             cd /home/dh_5qphxs/hexward.com
             rm -rf css js assets blog.html case-studies.html robots.txt sitemap.xml favicon.ico favicon.gif includes
-            git clone --depth 1 git@github.com:sharpspoon/hexward.com.git /tmp/site-repo
+            git clone --depth 1 https://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@github.com/sharpspoon/hexward.com.git /tmp/site-repo
             cp -r /tmp/site-repo/* /home/dh_5qphxs/hexward.com/
+            cp /tmp/site-repo/.gitignore /home/dh_5qphxs/hexward.com/ 2>/dev/null || true
             rm -rf /tmp/site-repo
             ls -la
