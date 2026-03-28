@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Deploy via SSH
-        uses: easingthemes/ssh-deploy@v5.2.0
+        uses: easingthemes/ssh-deploy@v5.1.0
         with:
           HOST: ${{ secrets.DREAMHOST_HOST }}
           USERNAME: ${{ secrets.DREAMHOST_USER }}
