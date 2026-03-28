@@ -12,17 +12,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Deploy via SSH
-        uses: easingthemes/ssh-deploy@v5.1.0
+      - name: Deploy site files via SSH
+        uses: appleboy/ssh-action@v0.1.10
         with:
-          HOST: ${{ secrets.DREAMHOST_HOST }}
-          USERNAME: ${{ secrets.DREAMHOST_USER }}
-          PORT: 22
-          PASSWORD: ${{ secrets.DREAMHOST_PASSWORD }}
-          SOURCE: "./"
-          TARGET: ${{ secrets.DREAMHOST_REMOTE_PATH }}
-          EXCLUDE: |
-            .git
-            .gitignore
-            .github
-            README.md
+          host: ${{ secrets.DREAMHOST_HOST }}
+          username: ${{ secrets.DREAMHOST_USER }}
+          password: ${{ secrets.DREAMHOST_PASSWORD }}
+          port: 22
+          timeout: 30s
+          command_timeout: 10m
+          script: |
+            cd /home/dh_5qphxs/hexward.com
+            rm -rf css js assets blog.html case-studies.html robots.txt sitemap.xml favicon.ico favicon.gif includes
+            ls -la
