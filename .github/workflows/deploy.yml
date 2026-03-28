@@ -23,12 +23,3 @@ jobs:
           target: ${{ secrets.DREAMHOST_REMOTE_PATH }}
           strip_components: 0
           overwrite: true
-          command: |
-            rm -f /home/dh_5qphxs/hexward.com/index.html
-            rm -f /home/dh_5qphxs/hexward.com/robots.txt
-            rm -f /home/dh_5qphxs/hexward.com/sitemap.xml
-            rm -f /home/dh_5qphxs/hexward.com/blog.html
-            rm -f /home/dh_5qphxs/hexward.com/case-studies.html
-            rm -rf /home/dh_5qphxs/hexward.com/css
-            rm -rf /home/dh_5qphxs/hexward.com/services
-            rm -rf /home/dh_5qphxs/hexward.com/assets
