@@ -14,8 +14,7 @@ jobs:
 
       - name: Deploy via rsync
         run: |
-          which rsync || (apt-get update -qq && apt-get install -y rsync)
-          apt-get install -y sshpass
+          sudo apt-get install -y sshpass
           sshpass -p "${{ secrets.DREAMHOST_PASSWORD }}" rsync -avz \
             -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
             --exclude=".git" \
