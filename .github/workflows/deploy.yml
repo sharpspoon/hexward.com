@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: macos-26
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -21,10 +21,10 @@ jobs:
         run: |
           mkdir -p ~/.ssh
           ssh-keyscan -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts 2>/dev/null
-          apt-get update -qq && apt-get install -y -qq sshpass rsync > /dev/null 2>&1
-          sshpass -p "$DEPLOY_PASSWORD" rsync -avz \
-            -e "ssh -o StrictHostKeyChecking=no -p 22" \
-            --exclude=".git" \
-            --exclude=".github" \
-            --exclude="README.md" \
-            ./ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH"
+          export RSYNC_RSH="ssh -o StrictHostKeyChecking=no -o PasswordAuthentication=yes"
+          export SSH_ASKPASS_REQUIRE="force"
+          export SSH_ASKPASS="/Users/runner/.ssh/askpass.sh"
+          echo '#!/bin/bash' > "$SSH_ASKPASS"
+          echo "echo $DEPLOY_PASSWORD" >> "$SSH_ASKPASS"
+          chmod +x "$SSH_ASKPASS"
+          rsync -avz --exclude=".git" --exclude=".github" --exclude="README.md" ./* "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH"
