@@ -12,17 +12,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup SSH keys
-        run: |
-          ssh-keyscan -H ${{ secrets.DREAMHOST_HOST }} >> ~/.ssh/known_hosts
-          echo "${{ secrets.DREAMHOST_PASSWORD }}" | tr -d '\n' > ~/.ssh/passphrase
-          chmod 600 ~/.ssh/passphrase
-
       - name: Deploy site via rsync
+        env:
+          DEPLOY_HOST: ${{ secrets.DREAMHOST_HOST }}
+          DEPLOY_USER: ${{ secrets.DREAMHOST_USER }}
+          DEPLOY_PASSWORD: ${{ secrets.DREAMHOST_PASSWORD }}
+          DEPLOY_PATH: ${{ secrets.DREAMHOST_REMOTE_PATH }}
         run: |
-          sshpass -p "${{ secrets.DREAMHOST_PASSWORD }}" rsync -avz \
+          mkdir -p ~/.ssh
+          ssh-keyscan -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          apt-get update -qq && apt-get install -y -qq sshpass rsync > /dev/null 2>&1
+          sshpass -p "$DEPLOY_PASSWORD" rsync -avz \
             -e "ssh -o StrictHostKeyChecking=no -p 22" \
             --exclude=".git" \
             --exclude=".github" \
             --exclude="README.md" \
-            ./ ${{ secrets.DREAMHOST_USER }}@${{ secrets.DREAMHOST_HOST }}:${{ secrets.DREAMHOST_REMOTE_PATH }}
+            ./ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH"
