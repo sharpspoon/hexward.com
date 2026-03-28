@@ -7,24 +7,27 @@ on:
 
 jobs:
   deploy:
-    runs-on: macos-26
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          sparse-checkout: .
+          sparse-checkout-cone-mode: false
 
-      - name: Deploy site via rsync
-        env:
-          DEPLOY_HOST: ${{ secrets.DREAMHOST_HOST }}
-          DEPLOY_USER: ${{ secrets.DREAMHOST_USER }}
-          DEPLOY_PASSWORD: ${{ secrets.DREAMHOST_PASSWORD }}
-          DEPLOY_PATH: ${{ secrets.DREAMHOST_REMOTE_PATH }}
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts 2>/dev/null
-          export RSYNC_RSH="ssh -o StrictHostKeyChecking=no -o PasswordAuthentication=yes"
-          export SSH_ASKPASS_REQUIRE="force"
-          export SSH_ASKPASS="/Users/runner/.ssh/askpass.sh"
-          echo '#!/bin/bash' > "$SSH_ASKPASS"
-          echo "echo $DEPLOY_PASSWORD" >> "$SSH_ASKPASS"
-          chmod +x "$SSH_ASKPASS"
-          rsync -avz --exclude=".git" --exclude=".github" --exclude="README.md" ./* "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH"
+      - name: Push to DreamHost via SSH
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.DREAMHOST_HOST }}
+          username: ${{ secrets.DREAMHOST_USER }}
+          password: ${{ secrets.DREAMHOST_PASSWORD }}
+          port: 22
+          timeout: 30s
+          command_timeout: 5m
+          command: |
+            cd /home/dh_5qphxs/hexward.com
+            rm -rf css js assets blog.html case-studies.html robots.txt sitemap.xml favicon.ico favicon.gif includes
+            git clone --depth 1 git@github.com:sharpspoon/hexward.com.git /tmp/site-repo
+            cp -r /tmp/site-repo/* /home/dh_5qphxs/hexward.com/
+            rm -rf /tmp/site-repo
+            ls -la
