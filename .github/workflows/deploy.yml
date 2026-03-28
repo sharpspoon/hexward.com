@@ -11,24 +11,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          sparse-checkout: .
-          sparse-checkout-cone-mode: false
 
-      - name: Push to DreamHost via SSH
-        uses: appleboy/ssh-action@v0.1.10
-        with:
-          host: ${{ secrets.DREAMHOST_HOST }}
-          username: ${{ secrets.DREAMHOST_USER }}
-          password: ${{ secrets.DREAMHOST_PASSWORD }}
-          port: 22
-          timeout: 30s
-          command_timeout: 5m
-          script: |
-            cd /home/dh_5qphxs
-            rm -rf css js assets blog.html case-studies.html robots.txt sitemap.xml favicon.ico favicon.gif includes README.md robin.png
-            git clone --depth 1 https://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@github.com/sharpspoon/hexward.com.git /tmp/site-repo
-            cp -r /tmp/site-repo/* /home/dh_5qphxs/
-            cp /tmp/site-repo/.gitignore /home/dh_5qphxs/ 2>/dev/null || true
-            rm -rf /tmp/site-repo
-            ls -la
+      - name: Deploy via rsync
+        run: |
+          which rsync || (apt-get update -qq && apt-get install -y rsync)
+          apt-get install -y sshpass
+          sshpass -p "${{ secrets.DREAMHOST_PASSWORD }}" rsync -avz \
+            -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
+            --exclude=".git" \
+            --exclude=".github" \
+            --exclude="README.md" \
+            --delete-after \
+            ./ ${{ secrets.DREAMHOST_USER }}@${{ secrets.DREAMHOST_HOST }}:/home/dh_5qphxs/
