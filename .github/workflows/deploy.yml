@@ -1,0 +1,32 @@
+name: Deploy to DreamHost
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy via SFTP
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.DREAMHOST_HOST }}
+          username: ${{ secrets.DREAMHOST_USER }}
+          password: ${{ secrets.DREAMHOST_PASSWORD }}
+          port: 22
+          source: "./"
+          target: ${{ secrets.DREAMHOST_REMOTE_PATH }}
+          strip_components: 0
+          overwrite: true
+          command: |
+            rm -f /home/hexward/hexward.com/index.html
+            rm -f /home/hexward/hexward.com/robots.txt
+            rm -f /home/hexward/hexward.com/sitemap.xml
+            rm -f /home/hexward/hexward.com/blog.html
+            rm -f /home/hexward/hexward.com/case-studies.html
+            rm -rf /home/hexward/hexward.com/css
+            rm -rf /home/hexward/hexward.com/services
