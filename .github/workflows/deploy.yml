@@ -13,15 +13,16 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Deploy via SSH
-        env:
-          DEPLOY_HOST: ${{ secrets.DREAMHOST_HOST }}
-          DEPLOY_USER: ${{ secrets.DREAMHOST_USER }}
-          DEPLOY_PASSWORD: ${{ secrets.DREAMHOST_PASSWORD }}
-          DEPLOY_PATH: ${{ secrets.DREAMHOST_REMOTE_PATH }}
-        run: |
-          apt-get update && apt-get install -y sshpass rsync
-          sshpass -p "$DEPLOY_PASSWORD" rsync -avz --delete \
-            -e "ssh -o StrictHostKeyChecking=no" \
-            --exclude=".git" \
-            --exclude=".github" \
-            ./ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH"
+        uses: easingthemes/ssh-deploy@v5.2.1
+        with:
+          HOST: ${{ secrets.DREAMHOST_HOST }}
+          USERNAME: ${{ secrets.DREAMHOST_USER }}
+          PORT: 22
+          PASSWORD: ${{ secrets.DREAMHOST_PASSWORD }}
+          SOURCE: "./"
+          TARGET: ${{ secrets.DREAMHOST_REMOTE_PATH }}
+          EXCLUDE: |
+            .git
+            .gitignore
+            .github
+            README.md
