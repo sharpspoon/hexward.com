@@ -345,6 +345,9 @@ footer {
 
 .footer-links a:hover { color: var(--accent); }
 
+.footer-sep { color: var(--text-muted); font-size: 0.85rem; }
+.footer-note { font-size: 0.85rem; color: var(--text-muted); }
+
 /* Responsive */
 @media (max-width: 768px) {
     .hero h1 { font-size: 1.75rem; }
