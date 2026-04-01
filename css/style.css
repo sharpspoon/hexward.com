@@ -226,6 +226,51 @@ section { padding: 3rem 0; }
     margin-bottom: 0.4rem;
 }
 
+/* Proof section */
+.proof-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+}
+
+.proof-item {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.25rem;
+}
+
+.proof-stat {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--green);
+    margin-bottom: 0.5rem;
+}
+
+.proof-item p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .proof-grid { grid-template-columns: 1fr; }
+}
+
+/* CTA Banner */
+.cta-banner {
+    background: var(--bg-alt);
+    text-align: center;
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.cta-banner p {
+    color: var(--text-muted);
+    max-width: 500px;
+    margin: 0 auto 1.25rem;
+}
+
 /* About */
 .about-grid {
     display: grid;
@@ -280,6 +325,12 @@ section { padding: 3rem 0; }
 .contact-panel p {
     color: var(--text-muted);
     margin-bottom: 0.75rem;
+}
+
+.contact-note {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
 }
 
 .contact-form {
