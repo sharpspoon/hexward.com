@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!--
+    All geometry centered at (256, 256).
+    Outer hexagon: pointy-top, circumradius = 200
+    H uprights: spread = ±88, height = ±112, pinch = ±56
+    Crossbar: y = 256 (true center)
+  -->
+
+  <!-- Outer hexagon (pointy-top, R=200) -->
+  <polygon
+    points="256,56 429.2,156 429.2,356 256,456 82.8,356 82.8,156"
+    fill="none" stroke="#2563eb" stroke-width="18" stroke-linejoin="round" />
+
+  <!-- H left upright: chevron opening outward -->
+  <polyline
+    points="168,144 200,256 168,368"
+    fill="none" stroke="#2563eb" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- H right upright: mirrored chevron -->
+  <polyline
+    points="344,144 312,256 344,368"
+    fill="none" stroke="#2563eb" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- H crossbar: centered at y=256 -->
+  <line
+    x1="200" y1="256" x2="312" y2="256"
+    stroke="#2563eb" stroke-width="18" stroke-linecap="round" />
+</svg>

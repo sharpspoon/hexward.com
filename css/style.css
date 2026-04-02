@@ -66,8 +66,20 @@ header .wrap {
     color: var(--text);
 }
 
-.brand a { color: inherit; text-decoration: none; }
+.brand a {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 .brand a:hover { color: var(--accent); text-decoration: none; }
+
+.brand-logo {
+    width: 24px;
+    height: 24px;
+}
 
 nav ul {
     list-style: none;
