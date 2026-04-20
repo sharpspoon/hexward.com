@@ -65,6 +65,14 @@ npm install
 npm run serve    # http://localhost:8080
 ```
 
+## Verify the integrated blog
+
+The blog now shares the main site navigation and styling instead of using a separate inline theme.
+
+```bash
+npm test
+```
+
 ## Linking from index.html
 
 Add a Blog entry to the nav in `index.html`:

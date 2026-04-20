@@ -2,6 +2,7 @@ const rssPlugin = require("@11ty/eleventy-plugin-rss");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(rssPlugin);
+  eleventyConfig.ignores.add("src/blog/_drafts/**");
 
 // Root-level HTML pages
 eleventyConfig.addPassthroughCopy("index.html");

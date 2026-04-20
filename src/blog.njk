@@ -5,15 +5,32 @@ description: Notes on backend, DevOps, data, and AI automation from Robin Ward.
 permalink: /blog/
 ---
 
-<h1>Blog</h1>
-<p>Field notes on shipping software — backend, DevOps, data, and AI automation. Written by Robin Ward.</p>
+<section class="page-hero section-border">
+    <div class="wrap blog-hero">
+        <p class="blog-eyebrow">Hexward Blog</p>
+        <h1>Field Notes From Production</h1>
+        <p class="blog-intro">Backend, DevOps, data, and AI automation notes from real client work, shipped systems, and the mistakes worth avoiding.</p>
+    </div>
+</section>
 
-<ul class="post-list">
-{% for post in collections.posts %}
-    <li>
-        <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
-        <div class="date">{{ post.date | readableDate }}</div>
-        {% if post.data.description %}<p>{{ post.data.description }}</p>{% endif %}
-    </li>
-{% endfor %}
-</ul>
+<section>
+    <div class="wrap">
+        {% if collections.posts.length %}
+        <ul class="blog-list">
+        {% for post in collections.posts %}
+            <li class="blog-list-item">
+                <div class="blog-list-meta">{{ post.date | readableDate }}</div>
+                <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+                {% if post.data.description %}<p>{{ post.data.description }}</p>{% endif %}
+                <a class="blog-list-link" href="{{ post.url }}">Read post &rarr;</a>
+            </li>
+        {% endfor %}
+        </ul>
+        {% else %}
+        <div class="blog-empty">
+            <h2>No posts yet</h2>
+            <p>The feed is set up. The writing backlog is the only thing missing.</p>
+        </div>
+        {% endif %}
+    </div>
+</section>
